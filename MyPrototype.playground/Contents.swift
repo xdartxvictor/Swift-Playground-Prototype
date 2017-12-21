@@ -27,7 +27,14 @@ class ViewController : UIViewController, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = "\(self.items[indexPath.row])"
+        cell.backgroundColor = colorForRowAt(indexPath: indexPath.row)
         return cell
+    }
+    
+    func colorForRowAt(indexPath: Int) -> UIColor {
+        let totalItems = self.items.count - 1
+        let val = (CGFloat(indexPath) / CGFloat(totalItems)) * 0.6
+        return UIColor(red: 1.0, green: val, blue: 0.0, alpha: 1.0)
     }
 }
 
